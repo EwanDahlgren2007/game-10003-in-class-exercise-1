@@ -19,10 +19,15 @@ namespace MohawkGame2D
 
         public void Update()
         {
-            Window.ClearBackground(Color.White);
+            Window.ClearBackground(Color.DarkGray);
             for (int i = 0; i < 10; i++)
             {
-                Draw.FillColor = Color.Black;
+                int r = 165 + i * 10;
+                int g = 255;
+                int b = 255 - i * 10;
+                Color color = new(r, g, b);
+                Draw.FillColor = color;
+
                 Draw.LineSize = 0;
 
                 float offsetX = Input.GetMouseX();
@@ -32,6 +37,9 @@ namespace MohawkGame2D
                 float x = i * 40.0f;
 
                 Draw.Circle(x+offsetX, offsetY, 10);
+
+                Text.Color = Color.White;
+                Text.Draw($"{i}", x - 10, offsetY - 60);
             }
         }
     }
